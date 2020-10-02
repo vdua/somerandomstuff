@@ -51,16 +51,16 @@ class Sample extends React.Component {
 export default Sample;
 
 var loadAdaptiveForm = (formname) => {
-  return myhttp.get(
+  /*return myhttp.get(
     `http://localhost/content/forms/af/${formname}/jcr:content/guideContainer.html`,
     { wcmmode: "disabled" },
     { auth: "admin:admin" }
-  );
+  );*/
 };
 
 export async function getStaticProps() {
   // Get external data from the file system, API, DB, etc.
-  const data = await loadAdaptiveForm("test");
+  const data = "some data"; //await loadAdaptiveForm("test");
 
   // The value of the `props` key will be
   //  passed to the `Home` component
