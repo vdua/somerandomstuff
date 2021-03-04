@@ -11,4 +11,9 @@ body {
   .anchor:hover {
     @apply underline;
   }
+
+  ul,
+  ol {
+    @apply px-4;
+  }
 }

@@ -13,7 +13,7 @@ const CodeBlock = ({ language, value }) => {
 export default function Post({ content, frontmatter }) {
   return (
     <Layout>
-      <article>
+      <article className="text-justify">
         <ReactMarkdown
           escapeHtml={false}
           source={content}

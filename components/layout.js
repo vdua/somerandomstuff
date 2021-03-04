@@ -43,7 +43,7 @@ export default function Layout({ children }) {
         {logo}
         {menu}
       </header>
-      <main class="container mx-auto max-w-screen-sm pb-10 flex-grow">
+      <main className="container mx-auto max-w-screen-sm pb-10 flex-grow">
         {children}
       </main>
       <footer className="w-full h-20 flex justify-center items-center flex-col">
