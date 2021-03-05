@@ -1,9 +1,6 @@
 ---
 title: Using Custom Fonts in Adobe HTML5 Forms
-description: Adobe's HTML5 Form solution provides a rendition similar to dynamic forms with some minor differences. One such
-difference is how the fonts are to be used. In PDF Forms, font can be embedded inside the PDF File while that is not the case
-with HTML 5 Forms which assumes font to be present on client's machine. But with web fonts, customer's can achieve the same with
-just little bit of code
+description: Adobe's HTML5 Form solution provides a rendition similar to dynamic forms with some minor differences. One such difference is how the fonts are to be used. In PDF Forms, font can be embedded inside the PDF File while that is not the case with HTML 5 Forms which assumes font to be present on client's machine. But with web fonts, customer's can achieve the same with just little bit of code
 tags:
   - Adobe
   - AEM
@@ -19,7 +16,7 @@ difference is how the fonts are to be used. In PDF Forms, font can be embedded i
 with HTML 5 Forms which assumes font to be present on client's machine. But with modern web technologies, there are mechanisms which can enable customers to provide their users with the same experience as with PDF Forms. The guide below provides step by step details
 to achieve the same.
 
-Before starting this guide make sure you have latest AEM Forms setup. This guide has been tested on the same and the author doesn't take any gaurantee for the old versions.
+Before starting this guide make sure you have latest AEM Forms setup. This guide has been tested on the same and the author doesn't take any guarantee for the old versions.
 
 # Steps
 
@@ -28,7 +25,7 @@ Before starting this guide make sure you have latest AEM Forms setup. This guide
 Even though the [official article](https://experienceleague.adobe.com/docs/experience-manager-65/forms/html5-forms/custom-profile.html?lang=en#create-the-profile-renderer-script) provides detailed instructions to create a custom profile, I am going to mention the exact changes needed for this demo to work.
 
 1. Navigate to CRXDE Lite.
-2. Create the following path under `content` : `somerandomstuff/html5`. Ensure the `jcr:primaryType` of each of the nodes is `sling:Folder` otherwise the next step will not work. And ofcourse, you can name this folders anything you like, I just needed some names for this guide. If you don't know how to create a path, there is a section in the end to demonstrate that
+2. Create the following path under `content` : `somerandomstuff/html5`. Ensure the `jcr:primaryType` of each of the nodes is `sling:Folder` otherwise the next step will not work. And of course, you can name this folders anything you like, I just needed some names for this guide. If you don't know how to create a path, there is a section in the end to demonstrate that
 3. Copy the node `default` present at `/content/xfaforms/profiles/` and paste it inside `/content/somerandomstuff/html5`. Rename it to `fontdemo`. Ensure the node `fontdemo` has the following properties. Except for `sling:resourceSuperType` you can change the value of any property as per your liking and ensure that `sling:resourceType` is a path to a `sling:Folder` under `/apps`
 
 | Property                |  Type  |                  Value                  |
