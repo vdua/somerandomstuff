@@ -35,7 +35,7 @@ Even though the [official article](https://experienceleague.adobe.com/docs/exper
 | sling:resourceType      | String |     somerandomstuff/html5/fontdemo      |
 | sling:resourceSuperType | String |            xfaforms/profile             |
 
-4. Navigate to `apps` and create the following path `someandomstuff/html5/fontdemo` and as mentioned in step 2 ensure the `jcr:primaryType` of each of the nodes is `sling:Folder`
+4. Navigate to `apps` and create the following path `somerandomstuff/html5/fontdemo` and as mentioned in step 2 ensure the `jcr:primaryType` of each of the nodes is `sling:Folder`
 5. Create a file `html.jsp` inside `somerandomstuff/html5/fontdemo`.
 6. Copy the contents of the file `/libs/xfaforms/profile/html.jsp` to `/apps/somerandomstuff/html5/fontdemo/html.jsp`.
 
@@ -47,21 +47,21 @@ As clearly mentioned above, the [official documentation](https://experienceleagu
 
 1. Open CRXDE Lite and navigate to `/apps/somerandomstuff/html5/fontdemo/`.
 2. Create a cq:clientLibraryFolder named `fontfile` with category `somerandomstuff.html5.fontdemo`. Follow the steps provided in [official doc](https://experienceleague.adobe.com/docs/experience-manager-65/developing/introduction/clientlibs.html?lang=en#create-a-client-library-folder)
-3. Navigate to `/apps/randomstuff/html5/fontdemo/fontfile` and create a node of type `nt:unstructured` and name as `font.ttf`. Save before proceeding ahead.
-4. Navigate to `/apps/randomstuff/html5/fontdemo/fontfile/font.ttf` and open the properties tab.
+3. Navigate to `/apps/somerandomstuff/html5/fontdemo/fontfile` and create a node of type `nt:unstructured` and name as `font.ttf`. Save before proceeding ahead.
+4. Navigate to `/apps/somerandomstuff/html5/fontdemo/fontfile/font.ttf` and open the properties tab.
 5. In the Name field enter `jcr:data` and choose `Binary` in the type Field. Click on Add and then click on Save at the top.
 6. In the properties tab click on the newly added property `jcr:data`. A dialog will come up asking you to browse a file. Select the font file and upload it. Click on Save at the top.
-7. Navigate to `/apps/randomstuff/html5/fontdemo/fontfile` and create a node of type `nt:file` and name as `style.css`. Save when done.
+7. Navigate to `/apps/somerandomstuff/html5/fontdemo/fontfile` and create a node of type `nt:file` and name as `style.css`. Save when done.
 8. Open the newly created file `style.css` and paste the following content and save. Replace the font-family with the actual name of the font being used in XDP
 
 ```
 @font-face {
     font-family: "fontName";
-    src: url('/apps/randomstuff/html5/fontdemo/fontfile/font.ttf');
+    src: url('/apps/someerandomstuff/html5/fontdemo/fontfile/font.ttf');
 }
 ```
 
-9. Navigate to `/apps/randomstuff/html5/fontdemo/fontfile` and create a node of type `nt:file` and name as `css.txt`. Save when done.
+9. Navigate to `/apps/somerandomstuff/html5/fontdemo/fontfile` and create a node of type `nt:file` and name as `css.txt`. Save when done.
 10. Open the newly created file `css.txt` and paste the following content and save. If you renamed your css file other than style.css in step 7, use that name here instead
 
 ```
@@ -69,7 +69,7 @@ style.css
 ```
 
 After saving your work ensure that the client library is created correctly by opening a browser and navigating to the following url
-`http://<server>:<port>/apps/randomstuff/html5/fontdemo/fontfile.css`. If you see the code you pasted in `style.css` appear you are good to go.
+`http://<server>:<port>/apps/somerandomstuff/html5/fontdemo/fontfile.css`. If you see the code you pasted in `style.css` appear you are good to go.
 
 ## Load the font in Custom Profile
 
@@ -90,7 +90,7 @@ The instructions below provide details on how to create a path (for this tutoria
 2. Click on Create at the top. In the dialog fill in the following values.
 
 | Property | Value           |
-| -------- | --------------- |
+| -------- | :-------------- |
 | Name     | somerandomstuff |
 | Type     | sling:Folder    |
 
@@ -99,7 +99,7 @@ The instructions below provide details on how to create a path (for this tutoria
 5. Click on Create at the top. In the dialog fill in the following values.
 
 | Property | Value        |
-| -------- | ------------ |
+| -------- | :----------- |
 | Name     | html5        |
 | Type     | sling:Folder |
 
