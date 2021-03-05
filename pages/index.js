@@ -21,7 +21,7 @@ export default function Home({ posts }) {
               <article key={slug}>
                 <h3 className="mb-2 flex flex-col items-start">
                   <Link href={"/posts/[slug]"} as={`/posts/${slug}`}>
-                    <a className="text-3xl font-semibold text-orange-600 no-underline">
+                    <a className="mb-4 text-3xl font-semibold text-orange-600 no-underline">
                       {title}
                     </a>
                   </Link>
@@ -30,7 +30,7 @@ export default function Home({ posts }) {
                   </span>
                 </h3>
                 <div>
-                  <p className="mb-8 text-justify leading-normal">
+                  <p className="mb-4 text-justify leading-normal">
                     {description}
                   </p>
                 </div>
