@@ -88,17 +88,21 @@ The instructions below provide details on how to create a path (for this tutoria
 
 1. Open CRXDE Lite and navigate to `content`
 2. Click on Create at the top. In the dialog fill in the following values.
-   | Property | Value |
-   | -------- | :---- |
-   | Name | somerandomstuff |
-   | Type | sling:Folder |
+
+| Property | Value           |
+| -------- | --------------- |
+| Name     | somerandomstuff |
+| Type     | sling:Folder    |
+
 3. Click on Ok and then Click on Save.
 4. Navigate to `/content/somerandomstuff`
 5. Click on Create at the top. In the dialog fill in the following values.
-   | Property | Value |
-   | -------- | :---- |
-   | Name | html5 |
-   | Type | sling:Folder |
+
+| Property | Value        |
+| -------- | ------------ |
+| Name     | html5        |
+| Type     | sling:Folder |
+
 6. Click on Ok and then Click on Save.
 
 Depending upon the path you need to create there can be more steps
