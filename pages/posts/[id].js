@@ -5,7 +5,9 @@ import matter from "gray-matter";
 import Layout from "../../components/layout";
 import ReactMarkdown from "react-markdown/with-html";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-
+import PostModel from "../../lib/Post";
+import toc from "remark-toc";
+import HeadingRenderer from "../../components/headingRenderer";
 const CodeBlock = ({ language, value }) => {
   return <SyntaxHighlighter language={language}>{value}</SyntaxHighlighter>;
 };
@@ -17,7 +19,9 @@ export default function Post({ content, frontmatter }) {
         <ReactMarkdown
           escapeHtml={false}
           source={content}
-          renderers={{ code: CodeBlock }}
+          className="markdown-content"
+          renderers={{ code: CodeBlock, heading: HeadingRenderer }}
+          plugins={[toc]}
         />
       </article>
     </Layout>
@@ -42,23 +46,13 @@ export async function getStaticProps({ params: { id } }) {
   const markdownWithMetadata = fs
     .readFileSync(path.join("content/posts", id + ".md"))
     .toString();
-
-  const { data, content } = matter(markdownWithMetadata);
-  console.log(data);
-  // Convert post date to format: Month day, Year
-  const options = { year: "numeric", month: "long", day: "numeric" };
-  const formattedDate = data.updatedAt.toLocaleDateString("en-US", options);
-  console.log(formattedDate);
-
-  const frontmatter = {
-    ...data,
-    updatedAt: formattedDate,
-  };
+  const post = new PostModel(id, markdownWithMetadata);
+  const postJson = post.json;
 
   return {
     props: {
-      content: `# ${data.title}\n${content}`,
-      frontmatter,
+      ...postJson,
+      content: `# ${postJson.title}\n${postJson.content}`,
     },
   };
 }

@@ -6,7 +6,7 @@ tags:
   - AEM
   - Adaptive Forms
   - Tutorial
-updatedAt: 2020-10-01
+publishedAt: 2020-10-01
 ---
 
 # Introduction

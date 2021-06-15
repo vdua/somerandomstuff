@@ -1,10 +1,18 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   margin: 0;
 }
 @layer components {
+  .markdown-content a {
+    @apply no-underline text-teal-700 bg-gray-200 p-1;
+  }
+  .markdown-content a:hover {
+    @apply underline;
+  }
+
   .anchor {
     @apply no-underline text-black;
   }
@@ -15,5 +23,13 @@ body {
   ul,
   ol {
     @apply px-4;
+  }
+
+  .info {
+    @apply bg-red-100 p-3 m-3 rounded-2xl border border-solid border-red-400;
+  }
+
+  .info > a {
+    @apply bg-transparent;
   }
 }

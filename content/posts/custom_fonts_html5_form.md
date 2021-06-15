@@ -6,7 +6,15 @@ tags:
   - AEM
   - HTML5 Forms
   - Tutorial
-updatedAt: 2021-03-04
+publishedAt: 2021-03-04
+lastUpdatedAt: 2021-06-14
+changelist:
+  - rev: 1
+    date: 2021-06-14
+    changes:
+      - minor formatting change in the code
+      - adding link to the web font specification
+      - linking appendix with the main section
 ---
 
 # Introduction
@@ -25,7 +33,7 @@ Before starting this guide make sure you have latest AEM Forms setup. This guide
 Even though the [official article](https://experienceleague.adobe.com/docs/experience-manager-65/forms/html5-forms/custom-profile.html?lang=en#create-the-profile-renderer-script) provides detailed instructions to create a custom profile, I am going to mention the exact changes needed for this demo to work.
 
 1. Navigate to CRXDE Lite.
-2. Create the following path under `content` : `somerandomstuff/html5`. Ensure the `jcr:primaryType` of each of the nodes is `sling:Folder` otherwise the next step will not work. And of course, you can name this folders anything you like, I just needed some names for this guide. If you don't know how to create a path, there is a section in the end to demonstrate that
+2. Create the following path under `content` : `somerandomstuff/html5`. Ensure the `jcr:primaryType` of each of the nodes is `sling:Folder` otherwise the next step will not work. And of course, you can name this folders anything you like, I just needed some names for this guide. If you don't know how to create a path, there is a [section](#create-a-path) in the end to demonstrate that
 3. Copy the node `default` present at `/content/xfaforms/profiles/` and paste it inside `/content/somerandomstuff/html5`. Rename it to `fontdemo`. Ensure the node `fontdemo` has the following properties. Except for `sling:resourceSuperType` you can change the value of any property as per your liking and ensure that `sling:resourceType` is a path to a `sling:Folder` under `/apps`
 
 | Property                |  Type  |                  Value                  |
@@ -52,7 +60,7 @@ As clearly mentioned above, the [official documentation](https://experienceleagu
 5. In the Name field enter `jcr:data` and choose `Binary` in the type Field. Click on Add and then click on Save at the top.
 6. In the properties tab click on the newly added property `jcr:data`. A dialog will come up asking you to browse a file. Select the font file and upload it. Click on Save at the top.
 7. Navigate to `/apps/somerandomstuff/html5/fontdemo/fontfile` and create a node of type `nt:file` and name as `style.css`. Save when done.
-8. Open the newly created file `style.css` and paste the following content and save. Replace the font-family with the actual name of the font being used in XDP
+8. Open the newly created file `style.css` and paste the following content and save. Replace the font-family with the actual name of the font being used in XDP.
 
 ```
 @font-face {
@@ -60,6 +68,11 @@ As clearly mentioned above, the [official documentation](https://experienceleagu
     src: url('/apps/someerandomstuff/html5/fontdemo/fontfile/font.ttf');
 }
 ```
+
+<div class="info"> 
+The above code is just an illustration, the actual properties and fonts should be defined as per the 
+<a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Web_fonts">HTML Web Font Specification</a> and 
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face">@font-face</a> property</div>
 
 9. Navigate to `/apps/somerandomstuff/html5/fontdemo/fontfile` and create a node of type `nt:file` and name as `css.txt`. Save when done.
 10. Open the newly created file `css.txt` and paste the following content and save. If you renamed your css file other than style.css in step 7, use that name here instead
@@ -76,8 +89,8 @@ After saving your work ensure that the client library is created correctly by op
 1. Navigate to `/apps/somerandomstuff/html5/fontdemo/html.jsp` and add the following code in the `<head>` section of the html
 
 ```
-    <%@taglib prefix="ui" uri="http://www.adobe.com/taglibs/granite/ui/1.0" %>
-	<ui:includeClientLib categories="somerandomstuff.html5.fontdemo" />
+<%@taglib prefix="ui" uri="http://www.adobe.com/taglibs/granite/ui/1.0" %>
+<ui:includeClientLib categories="somerandomstuff.html5.fontdemo" />
 ```
 
 # Appendix

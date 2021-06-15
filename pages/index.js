@@ -5,7 +5,8 @@ import matter from "gray-matter";
 import Layout from "../components/layout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTag } from "@fortawesome/free-solid-svg-icons";
-
+import Post from "../lib/Post";
+import { formatDate } from "../lib/utils";
 export default function Home({ posts }) {
   return (
     <Layout>
@@ -16,7 +17,7 @@ export default function Home({ posts }) {
 
       <div>
         {posts.map(
-          ({ frontmatter: { title, description, updatedAt, tags }, slug }) => (
+          ({ title, description, publishedAt, lastUpdatedAt, tags, slug }) => (
             <div>
               <article key={slug}>
                 <h3 className="mb-2 flex flex-col items-start">
@@ -26,7 +27,7 @@ export default function Home({ posts }) {
                     </a>
                   </Link>
                   <span className="mb-4 text-sm text-gray-600">
-                    {updatedAt}
+                    {formatDate(publishedAt)}
                   </span>
                 </h3>
                 <div>
@@ -60,27 +61,17 @@ export default function Home({ posts }) {
 export async function getStaticProps() {
   const files = fs.readdirSync(`${process.cwd()}/content/posts`);
 
-  const posts = files.map((filename) => {
-    const markdownWithMetadata = fs
-      .readFileSync(`content/posts/${filename}`)
-      .toString();
+  const posts = files
+    .map((filename) => {
+      const markdownWithMetadata = fs
+        .readFileSync(`content/posts/${filename}`)
+        .toString();
 
-    const { data } = matter(markdownWithMetadata);
-    console.log(data);
-    // Convert post date to format: Month day, Year
-    const options = { year: "numeric", month: "long", day: "numeric" };
-    const updatedAt = data.updatedAt.toLocaleDateString("en-US", options);
-
-    const frontmatter = {
-      ...data,
-      updatedAt,
-    };
-
-    return {
-      slug: filename.replace(".md", ""),
-      frontmatter,
-    };
-  });
+      const post = new Post(filename, markdownWithMetadata);
+      return post.json;
+    })
+    .filter(({ state, publishedAt }) => state != "draft" && publishedAt > 0)
+    .sort((first, second) => second.publishedAt - first.publishedAt);
 
   return {
     props: {
